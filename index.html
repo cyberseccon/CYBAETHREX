@@ -4,463 +4,593 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>CYBAETHREX — King of the Digital World</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    /* ── NEW PALETTE: Deep Slate-Blue — professional, corporate, not "hacker" ── */
-    --bg:       #0f1f35;      /* deep navy-blue, NOT pure black */
-    --deep:     #152844;
-    --panel:    #1c3356;
-    --card:     rgba(28,51,86,0.65);
-    --navy:     #1f3a61;
-    --cyan:     #29b8d8;      /* softer teal-blue, less neon */
-    --cyan2:    #1a90ad;
-    --accent:   #3ecfef;
-    --gold:     #e09b1a;
-    --gold2:    #b87c00;
-    --white:    #e8f2f9;
-    --offwhite: #b4cfe3;
-    --grey:     #6a90ad;
-    --border:   rgba(41,184,216,0.18);
-    --borderg:  rgba(41,184,216,0.07);
-    --glow:     0 0 22px rgba(41,184,216,0.22);
-    --shadow:   0 8px 40px rgba(0,0,0,0.25);
-  }
-  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body {
-    background: var(--bg);
-    color: var(--white);
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 17px; line-height: 1.78; overflow-x: hidden;
-  }
+:root {
+  /* ── LIGHT-FIRST PALETTE ── */
+  --bg:        #f0f4f8;
+  --bg2:       #e8eef5;
+  --white:     #ffffff;
+  --dark:      #0d1f36;
+  --dark2:     #162840;
+  --navy:      #1a3358;
+  --text:      #1e3a5f;
+  --text2:     #4a6580;
+  --text3:     #7a96ae;
 
-  /* Very subtle cross-hatch — professional, not hacker */
-  body::before {
-    content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
-    background-image:
-      linear-gradient(var(--borderg) 1px, transparent 1px),
-      linear-gradient(90deg, var(--borderg) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
+  /* Brand colours — teal/blue, amber gold, soft purple accent */
+  --teal:      #0891b2;
+  --teal-lt:   #e0f7fc;
+  --teal-md:   #bae8f5;
+  --blue:      #1d4ed8;
+  --blue-lt:   #e8f0fe;
+  --purple:    #7c3aed;
+  --purple-lt: #ede9fe;
+  --gold:      #d97706;
+  --gold-lt:   #fef3c7;
+  --green:     #059669;
+  --green-lt:  #d1fae5;
+  --red:       #dc2626;
+  --red-lt:    #fee2e2;
 
-  /* ── TOP ANNOUNCEMENT BAR ── */
-  .topbar {
-    position:relative; z-index:101;
-    background: linear-gradient(90deg, var(--cyan2), #1a6e8a, var(--cyan2));
-    text-align:center; padding:9px 5%;
-    font-family:'Share Tech Mono',monospace; font-size:0.74rem;
-    letter-spacing:2px; color:var(--white);
-  }
-  .topbar span { color:#ffe08a; }
+  --border:    #d1dde8;
+  --border2:   #e8eef5;
+  --shadow-sm: 0 2px 8px rgba(13,31,54,0.08);
+  --shadow:    0 4px 24px rgba(13,31,54,0.10);
+  --shadow-lg: 0 8px 48px rgba(13,31,54,0.14);
+  --radius:    12px;
+  --radius-sm: 8px;
+}
 
-  /* ── NAV ── */
-  nav {
-    position:sticky; top:0; left:0; right:0; z-index:100;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 6%; height:66px;
-    background: rgba(15,31,53,0.97);
-    backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--border);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.18);
-  }
-  .nav-logo {
-    font-family:'Orbitron',sans-serif; font-weight:900; font-size:1.2rem;
-    color:var(--white); letter-spacing:3px; text-decoration:none;
-  }
-  .nav-logo .cx { color:var(--cyan); }
-  .nav-logo .gx { color:var(--gold); }
-  .nav-links { display:flex; gap:2rem; list-style:none; }
-  .nav-links a {
-    color:var(--offwhite); text-decoration:none;
-    font-family:'Rajdhani',sans-serif; font-weight:600;
-    font-size:0.88rem; letter-spacing:1.5px; text-transform:uppercase;
-    transition:color .2s; padding-bottom:2px;
-    border-bottom:2px solid transparent;
-  }
-  .nav-links a:hover { color:var(--cyan); border-bottom-color:var(--cyan); }
-  .nav-cta {
-    background:var(--cyan); color:#0a1826;
-    padding:9px 22px; border:none;
-    font-family:'Orbitron',sans-serif; font-size:0.7rem;
-    font-weight:700; letter-spacing:2px;
-    cursor:pointer; text-decoration:none; transition:all .3s;
-    border-radius:2px;
-  }
-  .nav-cta:hover { background:var(--gold); box-shadow:0 0 18px rgba(224,155,26,0.4); }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px; line-height: 1.75; overflow-x: hidden;
+}
 
-  /* ── HERO ── */
-  #hero {
-    position:relative; z-index:1;
-    min-height: calc(100vh - 35px);
-    display:flex; flex-direction:column;
-    align-items:center; justify-content:center;
-    text-align:center; padding:100px 6% 70px;
-    background: linear-gradient(160deg, #0d1e35 0%, #132540 55%, #0f2038 100%);
-    overflow:hidden;
-  }
-  /* Soft radial glows — not harsh neon */
-  #hero::before {
-    content:''; position:absolute; inset:0; pointer-events:none;
-    background:
-      radial-gradient(ellipse 700px 400px at 20% 30%, rgba(41,184,216,0.07) 0%, transparent 70%),
-      radial-gradient(ellipse 500px 300px at 80% 70%, rgba(224,155,26,0.05) 0%, transparent 70%);
-  }
+/* ── TOPBAR ── */
+.topbar {
+  background: linear-gradient(90deg, var(--teal), var(--blue), var(--purple));
+  text-align:center; padding:10px 5%;
+  font-size:0.8rem; font-weight:500; letter-spacing:0.5px; color:#fff;
+}
+.topbar a { color:#fde68a; text-decoration:none; font-weight:600; }
 
-  .hero-badge {
-    position:relative; z-index:1;
-    display:inline-flex; align-items:center; gap:10px;
-    border:1px solid var(--border); padding:8px 22px;
-    font-family:'Share Tech Mono',monospace; font-size:0.76rem; color:var(--accent);
-    margin-bottom:2rem; background:rgba(41,184,216,0.06); border-radius:2px;
-    animation:fadeUp .7s ease both;
-  }
-  .badge-dot { width:7px; height:7px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
+/* ── NAV ── */
+nav {
+  position:sticky; top:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 6%; height:68px;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border2);
+  box-shadow: var(--shadow-sm);
+}
+.nav-logo {
+  font-family:'Orbitron',sans-serif; font-weight:900; font-size:1.15rem;
+  letter-spacing:2px; text-decoration:none; color:var(--dark);
+}
+.nav-logo .cx { color:var(--teal); }
+.nav-logo .gx { color:var(--gold); }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a {
+  color:var(--text2); text-decoration:none;
+  font-weight:500; font-size:0.9rem; letter-spacing:0.3px;
+  transition:color .2s; padding-bottom:2px;
+  border-bottom:2px solid transparent;
+}
+.nav-links a:hover { color:var(--teal); border-bottom-color:var(--teal); }
+.nav-cta {
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  color:#fff; padding:9px 22px; border:none; border-radius:6px;
+  font-weight:600; font-size:0.85rem; letter-spacing:0.5px;
+  cursor:pointer; text-decoration:none; transition:all .3s;
+  box-shadow: 0 2px 10px rgba(8,145,178,0.3);
+}
+.nav-cta:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(8,145,178,0.4); }
+.nav-hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.nav-hamburger span { width:22px; height:2px; background:var(--text); border-radius:2px; transition:all .3s; }
 
-  .hero-title {
-    position:relative; z-index:1;
-    font-family:'Orbitron',sans-serif; font-weight:900;
-    font-size:clamp(2.8rem, 7vw, 5.8rem);
-    letter-spacing:6px; line-height:1.05; margin-bottom:0.6rem;
-    animation:fadeUp .7s .12s ease both;
-  }
+/* ── HERO ── */
+#hero {
+  position:relative; overflow:hidden;
+  min-height: calc(100vh - 103px);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center; padding:80px 6% 60px;
+  background: linear-gradient(135deg, #0d1f36 0%, #1a3358 40%, #0d2a4a 70%, #0a1a2e 100%);
+}
+/* Geometric shapes for visual interest */
+.hero-shape {
+  position:absolute; pointer-events:none; border-radius:50%;
+  opacity:0.12;
+}
+.hs1 { width:600px; height:600px; background:var(--teal); top:-200px; right:-100px; filter:blur(80px); }
+.hs2 { width:400px; height:400px; background:var(--purple); bottom:-100px; left:-100px; filter:blur(80px); }
+.hs3 { width:300px; height:300px; background:var(--gold); top:30%; left:10%; filter:blur(60px); opacity:0.08; }
 
-  .hero-tagline {
-    position:relative; z-index:1;
-    font-family:'Orbitron',sans-serif; font-size:clamp(0.7rem,1.4vw,0.95rem);
-    font-weight:600; letter-spacing:5px; color:var(--gold);
-    margin-bottom:1.8rem; text-transform:uppercase;
-    animation:fadeUp .7s .22s ease both;
-  }
+.hero-badge {
+  position:relative; z-index:1;
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(255,255,255,0.1); backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.2); border-radius:50px;
+  padding:7px 20px; font-size:0.8rem; color:rgba(255,255,255,0.9);
+  margin-bottom:2rem; font-weight:500;
+  animation:fadeUp .6s ease both;
+}
+.badge-dot { width:7px; height:7px; border-radius:50%; background:#4ade80; animation:pulse 2s infinite; }
 
-  .hero-sub {
-    position:relative; z-index:1;
-    font-size:clamp(1rem,1.9vw,1.18rem); color:var(--offwhite);
-    max-width:650px; margin:0 auto 2.2rem; font-weight:400;
-    animation:fadeUp .7s .32s ease both;
-  }
-  .hero-sub strong { color:var(--white); font-weight:700; }
+.hero-title {
+  position:relative; z-index:1;
+  font-family:'Orbitron',sans-serif; font-weight:900;
+  font-size:clamp(2.5rem, 6.5vw, 5.5rem);
+  letter-spacing:4px; line-height:1.08; margin-bottom:0.5rem;
+  color:#fff;
+  animation:fadeUp .6s .1s ease both;
+}
+.hero-title .cx { color:#38bdf8; }
+.hero-title .gx {
+  color:transparent;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  -webkit-background-clip:text; background-clip:text;
+}
 
-  /* ── NEW MOTTO TREATMENT ── */
-  .hero-motto {
-    position:relative; z-index:1;
-    display:flex; align-items:center; gap:1.5rem; justify-content:center;
-    margin-bottom:3rem;
-    animation:fadeUp .7s .42s ease both;
-  }
-  .motto-line { width:50px; height:1px; background:var(--border); }
-  .motto-text {
-    font-family:'Rajdhani',sans-serif; font-size:1rem; font-weight:700;
-    letter-spacing:4px; text-transform:uppercase; color:var(--offwhite);
-  }
-  .motto-text .m-cyan { color:var(--cyan); }
-  .motto-text .m-gold { color:var(--gold); }
+.hero-tagline {
+  position:relative; z-index:1;
+  font-family:'Space Grotesk',sans-serif; font-size:clamp(0.8rem,1.4vw,1rem);
+  font-weight:600; letter-spacing:4px; color:#94d5f5;
+  margin-bottom:1.8rem; text-transform:uppercase;
+  animation:fadeUp .6s .2s ease both;
+}
 
-  .hero-btns {
-    position:relative; z-index:1;
-    display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;
-    animation:fadeUp .7s .52s ease both;
-  }
-  .btn-primary {
-    background:var(--cyan); color:#081624;
-    padding:15px 38px; border:none;
-    font-family:'Orbitron',sans-serif; font-size:0.76rem; font-weight:700;
-    letter-spacing:2px; text-decoration:none; cursor:pointer;
-    transition:all .3s; border-radius:3px;
-  }
-  .btn-primary:hover { background:var(--gold); box-shadow:0 4px 24px rgba(224,155,26,0.4); transform:translateY(-2px); }
-  .btn-outline {
-    background:transparent; color:var(--cyan);
-    padding:15px 38px; border:1.5px solid var(--cyan);
-    font-family:'Orbitron',sans-serif; font-size:0.76rem; font-weight:600;
-    letter-spacing:2px; text-decoration:none; cursor:pointer; transition:all .3s; border-radius:3px;
-  }
-  .btn-outline:hover { background:rgba(41,184,216,0.1); box-shadow:var(--glow); transform:translateY(-2px); }
+.hero-sub {
+  position:relative; z-index:1;
+  font-size:clamp(1rem,1.8vw,1.18rem); color:rgba(255,255,255,0.78);
+  max-width:620px; margin:0 auto 2rem; font-weight:400;
+  animation:fadeUp .6s .3s ease both;
+}
+.hero-sub strong { color:#fff; font-weight:600; }
 
-  /* ── PILLARS STRIP (replaced stats) ── */
-  .pillars-strip {
-    position:relative; z-index:1;
-    display:grid; grid-template-columns:repeat(3,1fr);
-    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-    background:rgba(21,40,68,0.85);
-  }
-  .pillar-item {
-    padding:2.5rem 2rem; text-align:center;
-    border-right:1px solid var(--border);
-    transition:background .3s;
-  }
-  .pillar-item:last-child { border-right:none; }
-  .pillar-item:hover { background:rgba(41,184,216,0.05); }
-  .pillar-icon { font-size:2rem; margin-bottom:0.75rem; display:block; }
-  .pillar-title {
-    font-family:'Orbitron',sans-serif; font-size:1rem; font-weight:700;
-    color:var(--cyan); display:block; margin-bottom:0.4rem; letter-spacing:2px;
-  }
-  .pillar-desc { font-size:0.88rem; color:var(--grey); }
+.hero-motto {
+  position:relative; z-index:1;
+  display:flex; align-items:center; gap:1.2rem; justify-content:center;
+  margin-bottom:2.8rem;
+  animation:fadeUp .6s .4s ease both;
+}
+.motto-line { flex:1; max-width:60px; height:1px; background:rgba(255,255,255,0.2); }
+.motto-text { font-size:0.85rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.7); }
+.motto-text .mc { color:#38bdf8; }
+.motto-text .mg { color:#fbbf24; }
+.motto-text .mp { color:#c084fc; }
 
-  /* ── SECTIONS ── */
-  section { position:relative; z-index:1; padding:100px 6%; }
-  .section-tag {
-    font-family:'Share Tech Mono',monospace; font-size:0.72rem;
-    color:var(--cyan); letter-spacing:3px; text-transform:uppercase;
-    margin-bottom:0.7rem; display:block;
-  }
-  .section-title {
-    font-family:'Orbitron',sans-serif; font-weight:700;
-    font-size:clamp(1.5rem, 3.2vw, 2.3rem);
-    line-height:1.25; margin-bottom:1rem;
-  }
-  .section-title span { color:var(--cyan); }
-  .section-desc { color:var(--grey); max-width:580px; font-size:1rem; line-height:1.75; }
-  .section-header { margin-bottom:4rem; }
+.hero-btns {
+  position:relative; z-index:1;
+  display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;
+  animation:fadeUp .6s .5s ease both;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #0891b2, #1d4ed8);
+  color:#fff; padding:14px 36px; border:none; border-radius:8px;
+  font-weight:700; font-size:0.88rem; letter-spacing:0.5px;
+  text-decoration:none; cursor:pointer; transition:all .3s;
+  box-shadow:0 4px 20px rgba(8,145,178,0.4);
+}
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 6px 28px rgba(8,145,178,0.5); }
+.btn-outline {
+  background:rgba(255,255,255,0.08); color:#fff;
+  padding:14px 36px; border:1.5px solid rgba(255,255,255,0.3); border-radius:8px;
+  font-weight:600; font-size:0.88rem; letter-spacing:0.5px;
+  text-decoration:none; cursor:pointer; transition:all .3s; backdrop-filter:blur(4px);
+}
+.btn-outline:hover { background:rgba(255,255,255,0.14); transform:translateY(-2px); }
 
-  /* ── ABOUT ── */
-  #about { background:linear-gradient(180deg, var(--bg) 0%, var(--deep) 100%); }
-  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
-  .about-text p { color:var(--offwhite); margin-bottom:1.3rem; font-size:1.03rem; }
-  .about-text p strong { color:var(--white); }
-  .about-visual {
-    position:relative; border:1px solid var(--border);
-    padding:3rem 2.5rem; background:var(--card);
-    box-shadow:var(--shadow); border-radius:4px;
-  }
-  .about-visual::before {
-    content:''; position:absolute; top:-1px; left:2.5rem; right:2.5rem; height:2px;
-    background:linear-gradient(90deg,transparent,var(--cyan),transparent);
-  }
-  .usp-line {
-    display:flex; align-items:flex-start; gap:1.2rem; margin-bottom:1.8rem;
-  }
-  .usp-line:last-child { margin-bottom:0; }
-  .usp-icon {
-    width:42px; height:42px; flex-shrink:0;
-    background:rgba(41,184,216,0.1); border:1px solid var(--border);
-    display:flex; align-items:center; justify-content:center;
-    font-size:1.1rem; border-radius:3px;
-  }
-  .usp-line h4 {
-    font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--white);
-    margin-bottom:4px; letter-spacing:1px;
-  }
-  .usp-line p { font-size:0.9rem; color:var(--grey); }
+/* ── TRUST BADGES ── */
+.trust-bar {
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  padding:1rem 6%;
+  display:flex; align-items:center; justify-content:center;
+  gap:2.5rem; flex-wrap:wrap;
+}
+.trust-item {
+  display:flex; align-items:center; gap:8px;
+  font-size:0.82rem; font-weight:600; color:var(--text2);
+}
+.trust-item .ti-icon { font-size:1.1rem; }
 
-  /* ── SERVICES ── */
-  #services { background:var(--deep); }
-  .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1px; background:var(--border); border-radius:4px; overflow:hidden; }
-  .service-card {
-    background:var(--navy); padding:2.5rem 2rem;
-    position:relative; overflow:hidden; transition:all .3s;
-  }
-  .service-card::after {
-    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
-    background:linear-gradient(90deg,var(--cyan),var(--gold));
-    transform:scaleX(0); transform-origin:left; transition:transform .35s;
-  }
-  .service-card:hover { background:rgba(31,58,97,0.95); transform:translateY(-3px); }
-  .service-card:hover::after { transform:scaleX(1); }
-  .service-icon {
-    width:50px; height:50px; border:1px solid var(--border);
-    display:flex; align-items:center; justify-content:center;
-    font-size:1.3rem; margin-bottom:1.4rem;
-    background:rgba(41,184,216,0.07); border-radius:4px;
-  }
-  .service-card h3 {
-    font-family:'Orbitron',sans-serif; font-size:0.88rem; font-weight:700;
-    color:var(--white); margin-bottom:0.75rem; letter-spacing:1px;
-  }
-  .service-card p { color:var(--grey); font-size:0.93rem; line-height:1.7; }
-  .service-tag {
-    display:inline-block; margin-top:1.2rem;
-    font-family:'Share Tech Mono',monospace; font-size:0.68rem;
-    color:var(--cyan); border:1px solid var(--border); padding:3px 10px; border-radius:2px;
-  }
+/* ── PILLARS ── */
+.pillars-strip {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+}
+.pillar-item {
+  padding:2.5rem 2rem; text-align:center;
+  border-right:1px solid var(--border);
+  transition:background .25s;
+  position:relative; overflow:hidden;
+}
+.pillar-item:last-child { border-right:none; }
+.pillar-item::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  opacity:0; transition:opacity .3s;
+}
+.pillar-item:nth-child(1)::before { background:linear-gradient(90deg,var(--teal),var(--blue)); }
+.pillar-item:nth-child(2)::before { background:linear-gradient(90deg,var(--blue),var(--purple)); }
+.pillar-item:nth-child(3)::before { background:linear-gradient(90deg,var(--purple),var(--gold)); }
+.pillar-item:hover { background:var(--bg); }
+.pillar-item:hover::before { opacity:1; }
+.pillar-icon-wrap {
+  width:60px; height:60px; border-radius:16px; margin:0 auto 1rem;
+  display:flex; align-items:center; justify-content:center; font-size:1.6rem;
+}
+.p1 .pillar-icon-wrap { background:var(--teal-lt); }
+.p2 .pillar-icon-wrap { background:var(--blue-lt); }
+.p3 .pillar-icon-wrap { background:var(--purple-lt); }
+.pillar-title {
+  font-family:'Space Grotesk',sans-serif; font-size:1rem; font-weight:700;
+  color:var(--dark); display:block; margin-bottom:0.4rem;
+}
+.pillar-desc { font-size:0.87rem; color:var(--text2); }
 
-  /* ── WHY US ── */
-  #why { background:var(--bg); }
-  .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
-  .why-list { display:flex; flex-direction:column; gap:1.2rem; }
-  .why-item {
-    display:flex; gap:1.2rem; align-items:flex-start;
-    padding:1.4rem 1.6rem; border:1px solid var(--border);
-    background:var(--card); transition:border-color .3s, transform .3s; border-radius:4px;
-  }
-  .why-item:hover { border-color:rgba(41,184,216,0.45); transform:translateX(4px); }
-  .why-num {
-    font-family:'Orbitron',sans-serif; font-size:1.6rem; font-weight:900;
-    color:rgba(41,184,216,0.18); flex-shrink:0; line-height:1; min-width:36px;
-  }
-  .why-item h4 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--cyan); margin-bottom:5px; }
-  .why-item p { font-size:0.92rem; color:var(--grey); }
+/* ── SECTIONS ── */
+section { position:relative; z-index:1; padding:90px 6%; }
+.section-label {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--teal-lt); color:var(--teal);
+  border-radius:50px; padding:5px 14px;
+  font-size:0.75rem; font-weight:700; letter-spacing:1px;
+  text-transform:uppercase; margin-bottom:1rem;
+}
+.section-title {
+  font-family:'Space Grotesk',sans-serif; font-weight:700;
+  font-size:clamp(1.6rem, 3vw, 2.4rem);
+  line-height:1.2; margin-bottom:1rem; color:var(--dark);
+}
+.section-title span { color:var(--teal); }
+.section-title .sp { color:var(--purple); }
+.section-desc { color:var(--text2); max-width:560px; font-size:1rem; }
+.section-header { margin-bottom:3.5rem; }
 
-  /* ── MISSION BOX (replaced cert tags) ── */
-  .mission-box {
-    border:1px solid var(--border); padding:3rem 2.5rem;
-    background:var(--card); position:relative; border-radius:4px;
-  }
-  .mission-box::before {
-    content:''; position:absolute; top:-1px; left:0; width:80px; height:3px;
-    background:linear-gradient(90deg,var(--gold),transparent);
-  }
-  .mission-box::after {
-    content:''; position:absolute; bottom:-1px; right:0; width:80px; height:3px;
-    background:linear-gradient(90deg,transparent,var(--cyan));
-  }
-  .mission-label {
-    font-family:'Share Tech Mono',monospace; font-size:0.72rem;
-    color:var(--gold); letter-spacing:3px; margin-bottom:1.5rem; display:block;
-  }
-  blockquote {
-    font-family:'Rajdhani',sans-serif; font-size:1.15rem; font-weight:600;
-    color:var(--white); line-height:1.65; margin-bottom:2rem;
-    border-left:3px solid var(--cyan); padding-left:1.2rem;
-  }
-  blockquote span { color:var(--cyan); }
-  .mission-pillars { display:flex; flex-direction:column; gap:0.8rem; }
-  .mp-row {
-    display:flex; align-items:center; gap:1rem;
-    padding:0.8rem 1rem; background:rgba(41,184,216,0.05);
-    border:1px solid var(--borderg); border-radius:3px;
-  }
-  .mp-icon { font-size:1.1rem; }
-  .mp-row span { font-size:0.92rem; color:var(--offwhite); font-weight:500; }
-  .mp-row b { color:var(--cyan); font-family:'Orbitron',sans-serif; font-size:0.78rem; }
+/* alternate label colours */
+.label-blue { background:var(--blue-lt); color:var(--blue); }
+.label-purple { background:var(--purple-lt); color:var(--purple); }
+.label-gold { background:var(--gold-lt); color:var(--gold); }
+.label-green { background:var(--green-lt); color:var(--green); }
 
-  /* ── TRAINING ── */
-  #training { background:linear-gradient(180deg,var(--deep) 0%,var(--bg) 100%); }
-  .training-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
-  .training-card {
-    padding:2.5rem 2rem; border:1px solid var(--border);
-    background:var(--card); position:relative; transition:all .3s; border-radius:4px;
-    overflow:hidden;
-  }
-  .training-card::before {
-    content:''; position:absolute; top:0; left:0; right:0; height:3px;
-    background:linear-gradient(90deg,var(--gold),var(--cyan));
-    transform:scaleX(0); transform-origin:left; transition:transform .35s;
-  }
-  .training-card:hover { border-color:rgba(224,155,26,0.35); transform:translateY(-4px); }
-  .training-card:hover::before { transform:scaleX(1); }
-  .tc-num {
-    font-family:'Orbitron',sans-serif; font-size:2.8rem; font-weight:900;
-    color:rgba(224,155,26,0.1); position:absolute; top:1rem; right:1.5rem; line-height:1;
-  }
-  .training-card h3 {
-    font-family:'Orbitron',sans-serif; font-size:0.85rem; color:var(--gold);
-    margin-bottom:0.9rem; letter-spacing:1px;
-  }
-  .training-card p { font-size:0.92rem; color:var(--grey); margin-bottom:1rem; }
-  .training-card ul { padding-left:1rem; }
-  .training-card ul li { font-size:0.88rem; color:var(--offwhite); margin-bottom:5px; }
-  .training-card ul li::marker { color:var(--cyan); }
+/* ── ABOUT ── */
+#about { background:var(--white); }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.about-text p { color:var(--text2); margin-bottom:1.2rem; font-size:1rem; }
+.about-text p strong { color:var(--dark); }
+.about-visual { display:flex; flex-direction:column; gap:1rem; }
+.usp-card {
+  display:flex; align-items:flex-start; gap:1rem;
+  padding:1.2rem 1.4rem; border-radius:var(--radius-sm);
+  border:1px solid var(--border); background:var(--white);
+  box-shadow:var(--shadow-sm); transition:all .3s;
+}
+.usp-card:hover { transform:translateX(4px); box-shadow:var(--shadow); border-color:var(--teal); }
+.usp-card .uc-icon {
+  width:40px; height:40px; border-radius:10px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+}
+.uc1 .uc-icon { background:var(--teal-lt); }
+.uc2 .uc-icon { background:var(--blue-lt); }
+.uc3 .uc-icon { background:var(--gold-lt); }
+.uc4 .uc-icon { background:var(--green-lt); }
+.usp-card h4 { font-size:0.88rem; font-weight:700; color:var(--dark); margin-bottom:3px; }
+.usp-card p { font-size:0.85rem; color:var(--text2); }
 
-  /* ── PARTNERS ── */
-  #partners { background:var(--deep); }
-  .partner-intro { max-width:680px; margin:0 auto 4rem; text-align:center; }
-  .partner-models { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
-  .pm-card {
-    border:1px solid var(--border); padding:2rem 1.8rem;
-    background:var(--card); transition:all .3s; border-radius:4px;
-  }
-  .pm-card:hover { border-color:rgba(41,184,216,0.4); transform:translateY(-3px); box-shadow:var(--shadow); }
-  .pm-card h3 { font-family:'Orbitron',sans-serif; font-size:0.82rem; color:var(--cyan); margin-bottom:0.75rem; letter-spacing:1px; }
-  .pm-card p { font-size:0.9rem; color:var(--grey); margin-bottom:1rem; line-height:1.7; }
-  .pm-tag { font-family:'Share Tech Mono',monospace; font-size:0.68rem; color:var(--grey); }
+/* ── SERVICES ── */
+#services { background:var(--bg); }
+.services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; }
+.service-card {
+  background:var(--white); border-radius:var(--radius); padding:2rem;
+  border:1px solid var(--border); box-shadow:var(--shadow-sm);
+  transition:all .3s; position:relative; overflow:hidden;
+}
+.service-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  opacity:0; transition:opacity .3s;
+}
+.sc1::before { background:linear-gradient(90deg,var(--teal),var(--blue)); }
+.sc2::before { background:linear-gradient(90deg,var(--blue),#06b6d4); }
+.sc3::before { background:linear-gradient(90deg,var(--purple),#8b5cf6); }
+.sc4::before { background:linear-gradient(90deg,var(--gold),#f59e0b); }
+.sc5::before { background:linear-gradient(90deg,var(--green),#10b981); }
+.sc6::before { background:linear-gradient(90deg,#dc2626,#f97316); }
+.service-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:transparent; }
+.service-card:hover::before { opacity:1; }
+.service-icon {
+  width:52px; height:52px; border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; margin-bottom:1.2rem;
+}
+.sc1 .service-icon { background:var(--teal-lt); }
+.sc2 .service-icon { background:var(--blue-lt); }
+.sc3 .service-icon { background:var(--purple-lt); }
+.sc4 .service-icon { background:var(--gold-lt); }
+.sc5 .service-icon { background:var(--green-lt); }
+.sc6 .service-icon { background:#fee2e2; }
+.service-card h3 { font-size:1rem; font-weight:700; color:var(--dark); margin-bottom:0.6rem; }
+.service-card p { color:var(--text2); font-size:0.9rem; line-height:1.7; }
+.service-pill {
+  display:inline-block; margin-top:1rem;
+  font-size:0.72rem; font-weight:600; border-radius:50px; padding:3px 10px;
+}
+.pill-teal { background:var(--teal-lt); color:var(--teal); }
+.pill-blue { background:var(--blue-lt); color:var(--blue); }
+.pill-purple { background:var(--purple-lt); color:var(--purple); }
+.pill-gold { background:var(--gold-lt); color:var(--gold); }
+.pill-green { background:var(--green-lt); color:var(--green); }
 
-  /* ── CONTACT ── */
-  #contact { background:var(--bg); }
-  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
-  .contact-info h3 {
-    font-family:'Orbitron',sans-serif; font-size:0.85rem; color:var(--cyan);
-    margin-bottom:2rem; letter-spacing:2px;
-  }
-  .contact-item { display:flex; gap:1rem; margin-bottom:1.8rem; align-items:flex-start; }
-  .ci-icon {
-    width:38px; height:38px; border:1px solid var(--border);
-    background:rgba(41,184,216,0.07); display:flex; align-items:center;
-    justify-content:center; font-size:1rem; flex-shrink:0; border-radius:3px;
-  }
-  .contact-item strong {
-    color:var(--white); display:block; font-size:0.8rem; margin-bottom:3px;
-    font-family:'Orbitron',sans-serif; letter-spacing:1px;
-  }
-  .contact-item p { font-size:0.92rem; color:var(--grey); }
-  .contact-form { display:flex; flex-direction:column; gap:1rem; }
-  .form-group { display:flex; flex-direction:column; gap:6px; }
-  .form-group label {
-    font-family:'Share Tech Mono',monospace; font-size:0.7rem;
-    color:var(--cyan); letter-spacing:2px;
-  }
-  .form-group input, .form-group select, .form-group textarea {
-    background:rgba(21,40,68,0.8); border:1px solid var(--border);
-    color:var(--white); padding:12px 16px;
-    font-family:'Rajdhani',sans-serif; font-size:1rem;
-    outline:none; transition:border-color .3s; border-radius:3px;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color:var(--cyan); background:rgba(28,51,86,0.9);
-  }
-  .form-group select option { background:var(--panel); }
-  .form-group textarea { resize:vertical; min-height:120px; }
-  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+/* ── CERTIFICATIONS RIBBON ── */
+#certs {
+  background: linear-gradient(135deg, var(--dark), var(--navy));
+  padding:60px 6%;
+}
+.certs-inner { text-align:center; max-width:800px; margin:0 auto; }
+.certs-inner h2 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.6rem; color:#fff; margin-bottom:0.5rem; }
+.certs-inner p { color:rgba(255,255,255,0.65); font-size:0.95rem; margin-bottom:2.5rem; }
+.certs-grid { display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center; }
+.cert-badge {
+  background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15);
+  border-radius:8px; padding:10px 18px;
+  font-size:0.82rem; font-weight:700; color:#fff; letter-spacing:0.5px;
+  backdrop-filter:blur(4px); transition:all .3s;
+}
+.cert-badge:hover { background:rgba(255,255,255,0.18); transform:translateY(-2px); }
+.cert-badge.ct { border-color:rgba(56,189,248,0.4); color:#7dd3fc; }
+.cert-badge.cb { border-color:rgba(96,165,250,0.4); color:#93c5fd; }
+.cert-badge.cp { border-color:rgba(192,132,252,0.4); color:#d8b4fe; }
+.cert-badge.cg { border-color:rgba(74,222,128,0.4); color:#86efac; }
 
-  /* ── FOOTER ── */
-  footer {
-    position:relative; z-index:1;
-    border-top:1px solid var(--border);
-    padding:4rem 6% 2rem;
-    background:var(--deep);
-  }
-  .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
-  .fb-logo {
-    font-family:'Orbitron',sans-serif; font-size:1.35rem; font-weight:900;
-    color:var(--white); letter-spacing:3px; display:block; margin-bottom:1rem;
-    text-decoration:none;
-  }
-  .fb-logo .cx { color:var(--cyan); }
-  .fb-logo .gx { color:var(--gold); }
-  .footer-brand p { color:var(--grey); font-size:0.9rem; max-width:280px; line-height:1.7; }
-  .fb-tagline {
-    font-family:'Rajdhani',sans-serif; font-size:0.85rem; font-weight:700;
-    color:var(--offwhite); margin-top:1.2rem; display:block; letter-spacing:2px;
-  }
-  .footer-col h4 {
-    font-family:'Orbitron',sans-serif; font-size:0.72rem;
-    color:var(--white); letter-spacing:2px; margin-bottom:1.2rem;
-  }
-  .footer-col ul { list-style:none; }
-  .footer-col ul li { margin-bottom:0.65rem; }
-  .footer-col ul li a {
-    color:var(--grey); text-decoration:none; font-size:0.9rem; transition:color .2s;
-  }
-  .footer-col ul li a:hover { color:var(--cyan); }
-  .footer-bottom {
-    border-top:1px solid var(--border); padding-top:2rem;
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
-  }
-  .footer-bottom p { font-size:0.82rem; color:var(--grey); font-family:'Share Tech Mono',monospace; }
-  .footer-bottom span { color:var(--cyan); }
+/* ── WHY US ── */
+#why { background:var(--white); }
+.why-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+.why-list { display:flex; flex-direction:column; gap:1rem; }
+.why-item {
+  display:flex; gap:1rem; align-items:flex-start;
+  padding:1.4rem; border-radius:var(--radius-sm);
+  border:1px solid var(--border); background:var(--bg);
+  transition:all .3s;
+}
+.why-item:hover { border-color:var(--teal); background:var(--white); box-shadow:var(--shadow); transform:translateX(4px); }
+.why-num-wrap {
+  width:40px; height:40px; border-radius:10px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Space Grotesk',sans-serif; font-size:0.85rem; font-weight:800;
+}
+.wn1 { background:var(--teal-lt); color:var(--teal); }
+.wn2 { background:var(--blue-lt); color:var(--blue); }
+.wn3 { background:var(--purple-lt); color:var(--purple); }
+.wn4 { background:var(--gold-lt); color:var(--gold); }
+.why-item h4 { font-size:0.92rem; font-weight:700; color:var(--dark); margin-bottom:4px; }
+.why-item p { font-size:0.88rem; color:var(--text2); }
+.mission-box {
+  background: linear-gradient(135deg, var(--dark), var(--navy));
+  border-radius:var(--radius); padding:2.5rem; color:#fff;
+  position:relative; overflow:hidden;
+}
+.mission-box::before {
+  content:''; position:absolute; top:-60px; right:-60px;
+  width:200px; height:200px; border-radius:50%;
+  background:rgba(8,145,178,0.15); pointer-events:none;
+}
+.mission-box::after {
+  content:''; position:absolute; bottom:-40px; left:-40px;
+  width:150px; height:150px; border-radius:50%;
+  background:rgba(124,58,237,0.12); pointer-events:none;
+}
+.mission-label { font-size:0.72rem; font-weight:700; letter-spacing:2px; color:#94d5f5; margin-bottom:1.2rem; display:block; text-transform:uppercase; }
+blockquote {
+  font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:600;
+  color:#fff; line-height:1.65; margin-bottom:2rem;
+  border-left:3px solid #38bdf8; padding-left:1rem;
+  position:relative; z-index:1;
+}
+blockquote span { color:#38bdf8; }
+.mission-pillars { display:flex; flex-direction:column; gap:0.75rem; position:relative; z-index:1; }
+.mp-row {
+  display:flex; align-items:center; gap:0.9rem;
+  padding:0.75rem 1rem; background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.1); border-radius:8px;
+}
+.mp-icon { font-size:1rem; }
+.mp-row span { font-size:0.88rem; color:rgba(255,255,255,0.85); font-weight:500; }
+.mp-row b { color:#38bdf8; font-weight:700; }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.85)} }
+/* ── TRAINING ── */
+#training { background:var(--bg); }
+.training-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; }
+.training-card {
+  background:var(--white); border-radius:var(--radius); padding:2rem;
+  border:1px solid var(--border); box-shadow:var(--shadow-sm);
+  position:relative; transition:all .3s; overflow:hidden;
+}
+.training-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+.tc-stripe {
+  position:absolute; top:0; left:0; right:0; height:4px; border-radius:var(--radius) var(--radius) 0 0;
+}
+.ts1 { background:linear-gradient(90deg,var(--teal),var(--blue)); }
+.ts2 { background:linear-gradient(90deg,var(--blue),var(--purple)); }
+.ts3 { background:linear-gradient(90deg,var(--purple),#ec4899); }
+.ts4 { background:linear-gradient(90deg,var(--gold),var(--green)); }
+.tc-icon {
+  width:48px; height:48px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; margin-bottom:1rem; margin-top:0.5rem;
+}
+.ti1 { background:var(--teal-lt); }
+.ti2 { background:var(--blue-lt); }
+.ti3 { background:var(--purple-lt); }
+.ti4 { background:var(--gold-lt); }
+.training-card h3 { font-size:0.95rem; font-weight:700; color:var(--dark); margin-bottom:0.65rem; }
+.training-card p { font-size:0.88rem; color:var(--text2); margin-bottom:0.9rem; }
+.training-card ul { padding-left:1.1rem; }
+.training-card ul li { font-size:0.85rem; color:var(--text2); margin-bottom:4px; }
+.training-card ul li::marker { color:var(--teal); }
 
-  /* ── MOBILE ── */
-  @media(max-width:900px){
-    .nav-links { display:none; }
-    .about-grid, .why-grid, .contact-grid { grid-template-columns:1fr; gap:2.5rem; }
-    .footer-grid { grid-template-columns:1fr 1fr; }
-    .form-row { grid-template-columns:1fr; }
-    .pillars-strip { grid-template-columns:1fr; }
-    .pillar-item { border-right:none; border-bottom:1px solid var(--border); }
-    section { padding:70px 4%; }
-  }
+/* ── PARTNERS ── */
+#partners { background:var(--white); }
+.partner-intro { max-width:620px; margin:0 auto 3.5rem; text-align:center; }
+.partner-intro .section-title { margin:0.5rem auto 0.8rem; }
+.partner-intro .section-desc { margin:0 auto; }
+.partner-models { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.2rem; }
+.pm-card {
+  border-radius:var(--radius); padding:2rem;
+  border:1px solid var(--border); background:var(--bg);
+  transition:all .3s; position:relative; overflow:hidden;
+}
+.pm-card:hover { background:var(--white); transform:translateY(-3px); box-shadow:var(--shadow); border-color:var(--teal); }
+.pm-icon {
+  width:50px; height:50px; border-radius:13px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; margin-bottom:1rem;
+}
+.pm1 .pm-icon { background:var(--gold-lt); }
+.pm2 .pm-icon { background:var(--teal-lt); }
+.pm3 .pm-icon { background:var(--blue-lt); }
+.pm4 .pm-icon { background:var(--green-lt); }
+.pm-card h3 { font-size:0.95rem; font-weight:700; color:var(--dark); margin-bottom:0.6rem; }
+.pm-card p { font-size:0.88rem; color:var(--text2); margin-bottom:0.9rem; line-height:1.7; }
+.pm-tag { font-size:0.75rem; color:var(--text3); font-weight:500; }
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--blue) 50%, var(--purple) 100%);
+  padding:60px 6%; text-align:center; color:#fff;
+}
+.cta-banner h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; margin-bottom:0.8rem; }
+.cta-banner p { font-size:1rem; opacity:0.88; max-width:520px; margin:0 auto 2rem; }
+.cta-banner .btn-white {
+  background:#fff; color:var(--teal);
+  padding:13px 34px; border:none; border-radius:8px;
+  font-weight:700; font-size:0.9rem; cursor:pointer;
+  text-decoration:none; transition:all .3s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.2);
+}
+.cta-banner .btn-white:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(0,0,0,0.25); }
+
+/* ── CONTACT ── */
+#contact { background:var(--bg); }
+.contact-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:4rem; align-items:start; }
+.contact-info-title { font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:700; color:var(--dark); margin-bottom:1.8rem; }
+.contact-item { display:flex; gap:1rem; margin-bottom:1.5rem; align-items:flex-start; }
+.ci-icon {
+  width:40px; height:40px; border-radius:10px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:1rem;
+}
+.cii1 { background:var(--teal-lt); }
+.cii2 { background:var(--blue-lt); }
+.cii3 { background:var(--purple-lt); }
+.cii4 { background:var(--gold-lt); }
+.cii5 { background:var(--green-lt); }
+.contact-item strong { color:var(--dark); display:block; font-size:0.82rem; font-weight:700; margin-bottom:2px; }
+.contact-item p { font-size:0.9rem; color:var(--text2); }
+.contact-form-wrap {
+  background:var(--white); border-radius:var(--radius); padding:2.5rem;
+  border:1px solid var(--border); box-shadow:var(--shadow);
+}
+.form-title { font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:700; color:var(--dark); margin-bottom:1.5rem; }
+.contact-form { display:flex; flex-direction:column; gap:1rem; }
+.form-group { display:flex; flex-direction:column; gap:5px; }
+.form-group label { font-size:0.78rem; font-weight:700; color:var(--text); letter-spacing:0.5px; text-transform:uppercase; }
+.form-group input, .form-group select, .form-group textarea {
+  background:var(--bg); border:1.5px solid var(--border);
+  color:var(--text); padding:11px 14px; border-radius:var(--radius-sm);
+  font-family:'Inter',sans-serif; font-size:0.95rem;
+  outline:none; transition:all .2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color:var(--teal); background:var(--white);
+  box-shadow:0 0 0 3px rgba(8,145,178,0.1);
+}
+.form-group textarea { resize:vertical; min-height:110px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.btn-submit {
+  background:linear-gradient(135deg, var(--teal), var(--blue));
+  color:#fff; padding:13px; border:none; border-radius:var(--radius-sm);
+  font-weight:700; font-size:0.92rem; cursor:pointer; transition:all .3s;
+  box-shadow:0 4px 16px rgba(8,145,178,0.3);
+}
+.btn-submit:hover { transform:translateY(-2px); box-shadow:0 6px 22px rgba(8,145,178,0.4); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark);
+  padding:4rem 6% 2rem; color:rgba(255,255,255,0.75);
+}
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+.fb-logo {
+  font-family:'Orbitron',sans-serif; font-size:1.2rem; font-weight:900;
+  letter-spacing:2px; text-decoration:none; display:block; margin-bottom:1rem;
+}
+.fb-logo .cx { color:#38bdf8; }
+.fb-logo .gx { color:#fbbf24; }
+.footer-brand p { font-size:0.88rem; max-width:260px; line-height:1.75; color:rgba(255,255,255,0.55); }
+.fb-tagline { font-size:0.8rem; font-weight:600; color:rgba(255,255,255,0.4); margin-top:1rem; display:block; letter-spacing:1px; }
+.footer-col h4 { font-size:0.75rem; font-weight:700; color:#fff; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1.2rem; }
+.footer-col ul { list-style:none; }
+.footer-col ul li { margin-bottom:0.6rem; }
+.footer-col ul li a { color:rgba(255,255,255,0.5); text-decoration:none; font-size:0.88rem; transition:color .2s; }
+.footer-col ul li a:hover { color:#38bdf8; }
+.footer-bottom {
+  border-top:1px solid rgba(255,255,255,0.1); padding-top:2rem;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+}
+.footer-bottom p { font-size:0.8rem; color:rgba(255,255,255,0.35); }
+.footer-bottom span { color:#38bdf8; }
+
+/* ── MOBILE NAV DRAWER ── */
+.mobile-nav {
+  display:none; flex-direction:column;
+  position:fixed; top:0; right:-100%; width:280px; height:100vh;
+  background:var(--white); z-index:200; padding:5rem 2rem 2rem;
+  box-shadow:-4px 0 30px rgba(0,0,0,0.15); transition:right .3s;
+}
+.mobile-nav.open { right:0; }
+.mobile-nav a { display:block; padding:0.9rem 0; font-weight:600; color:var(--text); text-decoration:none; border-bottom:1px solid var(--border); font-size:1rem; }
+.mobile-nav a:hover { color:var(--teal); }
+.mobile-close { position:absolute; top:1.2rem; right:1.5rem; font-size:1.5rem; cursor:pointer; color:var(--text); background:none; border:none; }
+.overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:150; }
+.overlay.open { display:block; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .nav-links,.nav-cta { display:none; }
+  .nav-hamburger { display:flex; }
+  .mobile-nav { display:flex; }
+  .about-grid,.why-grid,.contact-grid { grid-template-columns:1fr; gap:2.5rem; }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+  .form-row { grid-template-columns:1fr; }
+  .pillars-strip { grid-template-columns:1fr; }
+  .pillar-item { border-right:none; border-bottom:1px solid var(--border); }
+  section { padding:65px 4%; }
+  #certs { padding:50px 4%; }
+  .trust-bar { gap:1.2rem; padding:1rem 4%; }
+}
+@media(max-width:500px){
+  .footer-grid { grid-template-columns:1fr; }
+  .hero-btns { flex-direction:column; align-items:stretch; }
+  .btn-primary,.btn-outline { text-align:center; }
+}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
+<!-- TOPBAR -->
 <div class="topbar">
-  🇬🇧 UK-Based · Cyber · Cloud · AI Security &nbsp;|&nbsp; <span>Now accepting university training partnerships for 2025–26</span>
+  🇬🇧 UK-Based Cyber, Cloud &amp; AI Security Firm &nbsp;·&nbsp;
+  <a href="#partners">Now accepting university training partnerships 2025–26 →</a>
 </div>
 
 <!-- NAV -->
@@ -473,12 +603,34 @@
     <li><a href="#partners">Partners</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="nav-cta" href="#contact">GET IN TOUCH</a>
+  <a class="nav-cta" href="#contact">Get In Touch</a>
+  <div class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+
+<!-- MOBILE NAV -->
+<div class="overlay" id="overlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#training">Training</a>
+  <a href="#partners">Partners</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" style="color:var(--teal);margin-top:1rem;border:none">Get In Touch →</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-badge"><span class="badge-dot"></span> Cyber · Cloud · AI Security </div>
+  <div class="hero-shape hs1"></div>
+  <div class="hero-shape hs2"></div>
+  <div class="hero-shape hs3"></div>
+
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Cyber · Cloud · AI Security — United Kingdom
+  </div>
 
   <h1 class="hero-title">
     <span class="cx">CYBAETH</span><span class="gx">REX</span>
@@ -491,36 +643,44 @@
     protecting businesses today while training the <strong>defenders of tomorrow.</strong>
   </p>
 
-  <!-- NEW MOTTO: more meaningful than "Secure. Educate. Defend." -->
   <div class="hero-motto">
     <div class="motto-line"></div>
     <p class="motto-text">
-      <span class="m-cyan">Protect</span> · <span class="m-gold">Empower</span> · <span class="m-cyan">Advance</span>
+      <span class="mc">Protect</span> &nbsp;·&nbsp; <span class="mg">Empower</span> &nbsp;·&nbsp; <span class="mp">Advance</span>
     </p>
     <div class="motto-line"></div>
   </div>
 
   <div class="hero-btns">
-    <a class="btn-primary" href="#services">EXPLORE SERVICES</a>
-    <a class="btn-outline" href="#contact">WORK WITH US</a>
+    <a class="btn-primary" href="#services">Explore Services</a>
+    <a class="btn-outline" href="#contact">Work With Us</a>
   </div>
 </section>
 
-<!-- THREE PILLARS (replaces stats strip) -->
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="ti-icon">✅</span> CISSP · CEH · CISA Certified</div>
+  <div class="trust-item"><span class="ti-icon">🇬🇧</span> UK Registered Company</div>
+  <div class="trust-item"><span class="ti-icon">🎓</span> University Training Partner</div>
+  <div class="trust-item"><span class="ti-icon">☁️</span> AWS · Azure · GCP Security</div>
+  <div class="trust-item"><span class="ti-icon">🛡️</span> ISO 27001 · GDPR · Cyber Essentials</div>
+</div>
+
+<!-- THREE PILLARS -->
 <div class="pillars-strip">
-  <div class="pillar-item">
-    <span class="pillar-icon">🔐</span>
-    <span class="pillar-title">CYBER SECURITY</span>
+  <div class="pillar-item p1">
+    <div class="pillar-icon-wrap">🔐</div>
+    <span class="pillar-title">Cyber Security</span>
     <p class="pillar-desc">Certified threat defence, penetration testing and incident response for the modern enterprise.</p>
   </div>
-  <div class="pillar-item">
-    <span class="pillar-icon">☁️</span>
-    <span class="pillar-title">CLOUD SECURITY</span>
+  <div class="pillar-item p2">
+    <div class="pillar-icon-wrap">☁️</div>
+    <span class="pillar-title">Cloud Security</span>
     <p class="pillar-desc">Securing your cloud infrastructure end-to-end — architecture, compliance and continuous monitoring.</p>
   </div>
-  <div class="pillar-item">
-    <span class="pillar-icon">🤖</span>
-    <span class="pillar-title">AI SECURITY</span>
+  <div class="pillar-item p3">
+    <div class="pillar-icon-wrap">🤖</div>
+    <span class="pillar-title">AI Security</span>
     <p class="pillar-desc">AI-driven threat intelligence and model security — defence that thinks as fast as the threat does.</p>
   </div>
 </div>
@@ -529,39 +689,39 @@
 <section id="about">
   <div class="about-grid">
     <div class="about-text">
-      <span class="section-tag">// WHO WE ARE</span>
+      <div class="section-label">Who We Are</div>
       <h2 class="section-title">Not Just Security.<br><span>A Complete Defence.</span></h2>
       <p>At <strong>CYBAETHREX</strong>, we don't believe in half measures. While most firms specialise in one layer of security, we operate across all three — <strong>Cyber, Cloud and AI</strong> — giving our clients a complete, future-proof defence strategy from a single trusted partner.</p>
       <p>Our certified professionals bring not just qualifications but <strong>real-world, battle-tested experience</strong> from the frontlines of the industry. We've seen how threats evolve — and we evolve faster.</p>
       <p>What truly sets us apart is our belief that <strong>security starts with people</strong>. Alongside protecting businesses, we invest in the next generation — training university students and building the cyber talent the UK and Europe desperately needs.</p>
     </div>
     <div class="about-visual">
-      <div class="usp-line">
-        <div class="usp-icon">⚡</div>
+      <div class="usp-card uc1">
+        <div class="uc-icon">⚡</div>
         <div>
-          <h4>CERTIFIED EXPERTISE</h4>
-          <p>Learn from the best in the industry. We help you master your exams/certifications and effectively deploy your skills in a professional environment</p>
+          <h4>Certified Expertise</h4>
+          <p>Learn from the best. We help you master certifications and deploy skills in a real professional environment.</p>
         </div>
       </div>
-      <div class="usp-line">
-        <div class="usp-icon">🛡️</div>
+      <div class="usp-card uc2">
+        <div class="uc-icon">🛡️</div>
         <div>
-          <h4>INTEGRATED APPROACH</h4>
-          <p>Cyber + Cloud + AI under one roof — no gaps, no handoffs, no compromises</p>
+          <h4>Integrated Approach</h4>
+          <p>Cyber + Cloud + AI under one roof — no gaps, no handoffs, no compromises.</p>
         </div>
       </div>
-      <div class="usp-line">
-        <div class="usp-icon">🎓</div>
+      <div class="usp-card uc3">
+        <div class="uc-icon">🎓</div>
         <div>
-          <h4>TALENT PIPELINE</h4>
-          <p>Building tomorrow's defenders through university and student programmes</p>
+          <h4>Talent Pipeline</h4>
+          <p>Building tomorrow's defenders through university and student programmes across the UK.</p>
         </div>
       </div>
-      <div class="usp-line">
-        <div class="usp-icon">🌐</div>
+      <div class="usp-card uc4">
+        <div class="uc-icon">🌐</div>
         <div>
-          <h4>UK & EU REACH</h4>
-          <p>Serving corporates, government, startups and academia across UK and Europe</p>
+          <h4>UK &amp; EU Reach</h4>
+          <p>Serving corporates, government, startups and academia across UK and Europe.</p>
         </div>
       </div>
     </div>
@@ -571,46 +731,68 @@
 <!-- SERVICES -->
 <section id="services">
   <div class="section-header">
-    <span class="section-tag">// WHAT WE DO</span>
+    <div class="section-label label-blue">What We Do</div>
     <h2 class="section-title">Our <span>Core Services</span></h2>
     <p class="section-desc">Every service we deliver is built on certified expertise, real-world experience and a deep commitment to your security.</p>
   </div>
   <div class="services-grid">
-    <div class="service-card">
+    <div class="service-card sc1">
       <div class="service-icon">🔐</div>
-      <h3>CYBER SECURITY</h3>
+      <h3>Cyber Security</h3>
       <p>Penetration testing, threat intelligence, incident response and security audits delivered by certified professionals.</p>
-      <span class="service-tag">CORE SERVICE</span>
+      <span class="service-pill pill-teal">Core Service</span>
     </div>
-    <div class="service-card">
+    <div class="service-card sc2">
       <div class="service-icon">☁️</div>
-      <h3>CLOUD SECURITY</h3>
+      <h3>Cloud Security</h3>
       <p>Securing your cloud infrastructure across AWS, Azure and GCP — architecture reviews, compliance frameworks and continuous monitoring.</p>
-      <span class="service-tag">CORE SERVICE</span>
+      <span class="service-pill pill-blue">Core Service</span>
     </div>
-    <div class="service-card">
+    <div class="service-card sc3">
       <div class="service-icon">🤖</div>
-      <h3>AI SECURITY</h3>
+      <h3>AI Security</h3>
       <p>AI-driven threat detection, model security assessments and intelligent defence systems that adapt faster than any threat actor.</p>
-      <span class="service-tag">CORE SERVICE</span>
+      <span class="service-pill pill-purple">Core Service</span>
     </div>
-    <div class="service-card">
+    <div class="service-card sc4">
       <div class="service-icon">📋</div>
-      <h3>SECURITY AUDITS</h3>
+      <h3>Security Audits</h3>
       <p>Comprehensive audits and compliance reviews against ISO 27001, GDPR, Cyber Essentials and NIST frameworks.</p>
-      <span class="service-tag">CONSULTANCY</span>
+      <span class="service-pill pill-gold">Consultancy</span>
     </div>
-    <div class="service-card">
+    <div class="service-card sc5">
       <div class="service-icon">🎓</div>
-      <h3>Professional TRAINING</h3>
-      <p>Industry-led profesional certification programmes with live labs, career pathways and hands-on certifications.</p>
-      <span class="service-tag">EDUCATION</span>
+      <h3>Professional Training</h3>
+      <p>Industry-led professional certification programmes with live labs, career pathways and hands-on certifications.</p>
+      <span class="service-pill pill-green">Education</span>
     </div>
-    <div class="service-card">
+    <div class="service-card sc6">
       <div class="service-icon">💼</div>
-      <h3>CONSULTANCY</h3>
+      <h3>Consultancy</h3>
       <p>Strategic cyber security consultancy for startups, SMEs, corporates and government — from roadmapping to full implementation.</p>
-      <span class="service-tag">CONSULTANCY</span>
+      <span class="service-pill pill-teal">Consultancy</span>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="certs-inner">
+    <h2>Our Team's Certifications</h2>
+    <p>Backed by the most respected credentials in the cyber security industry — and the real-world experience to match.</p>
+    <div class="certs-grid">
+      <span class="cert-badge ct">CISSP</span>
+      <span class="cert-badge ct">CCSP</span>
+      <span class="cert-badge cb">CISM</span>
+      <span class="cert-badge cb">CISA</span>
+      <span class="cert-badge cp">CEH</span>
+      <span class="cert-badge cp">OSCP</span>
+      <span class="cert-badge ct">AWS Security</span>
+      <span class="cert-badge cb">Azure Security</span>
+      <span class="cert-badge cg">ISO 27001</span>
+      <span class="cert-badge cg">Cyber Essentials</span>
+      <span class="cert-badge ct">Cloud Architect</span>
+      <span class="cert-badge cp">GDPR Practitioner</span>
     </div>
   </div>
 </section>
@@ -619,63 +801,49 @@
 <section id="why">
   <div class="why-grid">
     <div>
-      <span class="section-tag">// WHY CYBAETHREX</span>
-      <h2 class="section-title" style="margin-bottom:2.5rem">What Makes Us <span>Different</span></h2>
+      <div class="section-label label-purple">Why CYBAETHREX</div>
+      <h2 class="section-title" style="margin-bottom:2rem">What Makes Us <span class="sp">Different</span></h2>
       <div class="why-list">
         <div class="why-item">
-          <div class="why-num">01</div>
+          <div class="why-num-wrap wn1">01</div>
           <div>
-            <h4>ONE ROOF. THREE PILLARS.</h4>
+            <h4>One Roof. Three Pillars.</h4>
             <p>Cyber, Cloud and AI security fully integrated — not siloed. One trusted partner, complete protection.</p>
           </div>
         </div>
         <div class="why-item">
-          <div class="why-num">02</div>
+          <div class="why-num-wrap wn2">02</div>
           <div>
-            <h4>CERTIFIED & BATTLE-TESTED</h4>
-            <p>Our team holds CISSP, CCSP,CISM, CISA, Multiple cloud Security and Archetict certifications. OSCP, CEH certified for AI, web and application pentesting and CISA, ISO 27000 certifications backed by real industry experience — never just theory.</p>
+            <h4>Certified &amp; Battle-Tested</h4>
+            <p>Our team holds CISSP, CCSP, CISM, CISA, OSCP, CEH and multiple cloud security and architect certifications — backed by real industry experience, never just theory.</p>
           </div>
         </div>
         <div class="why-item">
-          <div class="why-num">03</div>
+          <div class="why-num-wrap wn3">03</div>
           <div>
-            <h4>WE BUILD THE NEXT GUARD</h4>
+            <h4>We Build The Next Guard</h4>
             <p>Uniquely, we train university students — creating the UK's next generation of certified cyber defenders.</p>
           </div>
         </div>
         <div class="why-item">
-          <div class="why-num">04</div>
+          <div class="why-num-wrap wn4">04</div>
           <div>
-            <h4>AI-FIRST DEFENCE</h4>
+            <h4>AI-First Defence</h4>
             <p>We use AI-driven tools to detect and neutralise threats before they ever become incidents.</p>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- MISSION BOX — replaces cert tags block -->
     <div class="mission-box">
-      <span class="mission-label">// OUR MISSION</span>
+      <span class="mission-label">// Our Mission</span>
       <blockquote>
         "CYBAETHREX exists to <span>protect the digital world</span> and empower the people who will <span>defend it tomorrow.</span>"
       </blockquote>
       <div class="mission-pillars">
-        <div class="mp-row">
-          <span class="mp-icon">🔐</span>
-          <span><b>PROTECT</b> — Defending businesses, governments and institutions from evolving threats</span>
-        </div>
-        <div class="mp-row">
-          <span class="mp-icon">🎓</span>
-          <span><b>EMPOWER</b> — Training the next generation of cyber professionals at universities</span>
-        </div>
-        <div class="mp-row">
-          <span class="mp-icon">🚀</span>
-          <span><b>ADVANCE</b> — Staying ahead through AI-driven innovation and industry expertise</span>
-        </div>
-        <div class="mp-row">
-          <span class="mp-icon">🤝</span>
-          <span><b>PARTNER</b> — Building strategic alliances that multiply impact across the sector</span>
-        </div>
+        <div class="mp-row"><span class="mp-icon">🔐</span><span><b>PROTECT</b> — Defending businesses, governments and institutions from evolving threats</span></div>
+        <div class="mp-row"><span class="mp-icon">🎓</span><span><b>EMPOWER</b> — Training the next generation of cyber professionals at universities</span></div>
+        <div class="mp-row"><span class="mp-icon">🚀</span><span><b>ADVANCE</b> — Staying ahead through AI-driven innovation and industry expertise</span></div>
+        <div class="mp-row"><span class="mp-icon">🤝</span><span><b>PARTNER</b> — Building strategic alliances that multiply impact across the sector</span></div>
       </div>
     </div>
   </div>
@@ -684,56 +852,56 @@
 <!-- TRAINING -->
 <section id="training">
   <div class="section-header">
-    <span class="section-tag">// BUILDING TOMORROW</span>
+    <div class="section-label label-gold">Building Tomorrow</div>
     <h2 class="section-title">University <span>Training Programmes</span></h2>
-    <p class="section-desc">We bring live industry experience into lecture halls — building career-ready cyber professionals before they graduate.</p>
+    <p class="section-desc">We bring live industry experience into lecture halls — building career-ready professionals before they graduate.</p>
   </div>
   <div class="training-grid">
     <div class="training-card">
-      <span class="tc-num">01</span>
-      <h3>CYBER TRAININGS</h3>
+      <div class="tc-stripe ts1"></div>
+      <div class="tc-icon ti1">🔐</div>
+      <h3>Cyber Trainings</h3>
       <p>Core cyber security knowledge built around real threats, not textbook theory.</p>
       <ul>
-        <li>Threat landscape </li>
-        <li>Network, Application & Endpoint security</li>
+        <li>Threat landscape overview</li>
+        <li>Network, Application &amp; Endpoint security</li>
         <li>Penetration testing methodology</li>
         <li>Hands-on lab sessions</li>
         <li>Industry guest lectures</li>
       </ul>
     </div>
     <div class="training-card">
-      <span class="tc-num">02</span>
-      <h3>CLOUD & AI SECURITY</h3>
-      <p>Specialist training in securing cloud platforms and AI systems — the skills employers are actively seeking.</p>
+      <div class="tc-stripe ts2"></div>
+      <div class="tc-icon ti2">☁️</div>
+      <h3>Cloud &amp; AI Security</h3>
+      <p>Specialist training in securing cloud platforms and AI systems — skills employers are actively seeking.</p>
       <ul>
-        <li>Designing and Building AWS/Azure environment as per Industry standards</li>
+        <li>Designing &amp; building AWS/Azure environments to industry standards</li>
         <li>AWS / Azure security deep dives</li>
-        <li>Infrastructure as Code (IaC) & automated security pipelines</li>
-        <li>Cloud application design and deployment</li>
-        <li>Securing AI systems & Large Language Models</li>
-        <li>Infrastructure as Code (IaC) & automated security pipelines</li>
-        <li>Resume-ready portfolio projects & certification pathways</li>
+        <li>Infrastructure as Code (IaC) &amp; automated security pipelines</li>
+        <li>Securing AI systems &amp; Large Language Models</li>
+        <li>Resume-ready portfolio projects &amp; certification pathways</li>
       </ul>
     </div>
     <div class="training-card">
-      <span class="tc-num">03</span>
-      <h3>Software Engineering & DevOps</h3>
-      <p>Modern software engineering — teaching students to build scalable systems, deploy to the cloud, and engineer like industry professionals.</p>
+      <div class="tc-stripe ts3"></div>
+      <div class="tc-icon ti3">💻</div>
+      <h3>Software Engineering &amp; DevOps</h3>
+      <p>Modern engineering — teaching students to build scalable systems and deploy like industry professionals.</p>
       <ul>
-        <li>Full-stack architecture & system design</li>
+        <li>Full-stack architecture &amp; system design</li>
         <li>API development and microservices security</li>
-        <li>CI/CD pipelines & cloud deployment</li>
-        <li>Integrating AI models & LLM APIs into apps</li>
-        <li>Database management & data structures in practice</li>
-        <li>Technical interview & LeetCode preparation</li>
-        <li>Open-source contributions & Git workflow</li>
+        <li>CI/CD pipelines &amp; cloud deployment</li>
+        <li>Integrating AI models &amp; LLM APIs into apps</li>
+        <li>Technical interview &amp; LeetCode preparation</li>
         <li>Collaborative capstone projects</li>
       </ul>
     </div>
     <div class="training-card">
-      <span class="tc-num">04</span>
-      <h3>CAREER ACCELERATOR</h3>
-      <p>From CV to certification — we guide students into their first cyber security role with real employer connections.</p>
+      <div class="tc-stripe ts4"></div>
+      <div class="tc-icon ti4">🚀</div>
+      <h3>Career Accelerator</h3>
+      <p>From CV to certification — we guide students into their first role with real employer connections.</p>
       <ul>
         <li>Industry mentorship</li>
         <li>Interview preparation</li>
@@ -747,83 +915,95 @@
 <!-- PARTNERS -->
 <section id="partners">
   <div class="partner-intro">
-    <span class="section-tag" style="text-align:center;display:block">// WORK WITH US</span>
-    <h2 class="section-title" style="text-align:center">Partner With <span>CYBAETHREX</span></h2>
-    <p class="section-desc" style="margin:0 auto;text-align:center">We bring certified expertise, live industry experience and co-branded training to every partnership — turning your technology into trusted, real-world security solutions.</p>
+    <div class="section-label label-green" style="display:inline-flex;margin:0 auto 0.5rem">Work With Us</div>
+    <h2 class="section-title">Partner With <span>CYBAETHREX</span></h2>
+    <p class="section-desc">We bring certified expertise, live industry experience and co-branded training to every partnership — turning your technology into trusted, real-world security solutions.</p>
   </div>
   <div class="partner-models">
-    <div class="pm-card">
-      <h3>🎓 TRAINING PARTNER</h3>
+    <div class="pm-card pm1">
+      <div class="pm-icon">🎓</div>
+      <h3>Training Partner</h3>
       <p>Co-develop and deliver branded cyber security training programmes for universities, corporates and government teams.</p>
-      <span class="pm-tag">// Best for: Training bodies · Certification authorities · E-learning platforms</span>
+      <p class="pm-tag">Best for: Training bodies · Certification authorities · E-learning platforms</p>
     </div>
-    <div class="pm-card">
-      <h3>🔧 TECHNOLOGY PARTNER</h3>
-      <p>We integrate your tools into our live security audits and consultancy engagements — giving your solutions real-world validation.</p>
-      <span class="pm-tag">// Best for: Security vendors · Cloud platforms · AI tool providers</span>
+    <div class="pm-card pm2">
+      <div class="pm-icon">🔧</div>
+      <h3>Technology Partner</h3>
+      <p>We integrate your tools into our live security audits and consultancy — giving your solutions real-world validation.</p>
+      <p class="pm-tag">Best for: Security vendors · Cloud platforms · AI tool providers</p>
     </div>
-    <div class="pm-card">
-      <h3>🏛️ JOINT WORKSHOP PARTNER</h3>
+    <div class="pm-card pm3">
+      <div class="pm-icon">🏛️</div>
+      <h3>Joint Workshop Partner</h3>
       <p>Co-deliver live industry workshops — threat simulation days, cloud bootcamps, AI security labs across UK and Europe.</p>
-      <span class="pm-tag">// Best for: Tech vendors · Industry associations · Professional bodies</span>
+      <p class="pm-tag">Best for: Tech vendors · Industry associations · Professional bodies</p>
     </div>
-    <div class="pm-card">
-      <h3>🤝 REFERRAL PARTNER</h3>
+    <div class="pm-card pm4">
+      <div class="pm-icon">🤝</div>
+      <h3>Referral Partner</h3>
       <p>Introduce clients who need Cyber, Cloud or AI expertise. We handle delivery. You benefit from a trusted referral relationship.</p>
-      <span class="pm-tag">// Best for: Consultancies · IT firms · Recruitment agencies</span>
+      <p class="pm-tag">Best for: Consultancies · IT firms · Recruitment agencies</p>
     </div>
   </div>
 </section>
 
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to Secure Your Digital Future?</h2>
+  <p>Whether you're a business, university, startup or government — let's build something powerful together.</p>
+  <a class="btn-white" href="#contact">Start The Conversation →</a>
+</div>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header">
-    <span class="section-tag">// GET IN TOUCH</span>
+    <div class="section-label">Get In Touch</div>
     <h2 class="section-title">Start the <span>Conversation</span></h2>
     <p class="section-desc">Whether you're a business, university, government body or potential partner — we'd love to hear from you.</p>
   </div>
   <div class="contact-grid">
-    <div class="contact-info">
-      <h3>// REACH US</h3>
+    <div>
+      <p class="contact-info-title">Reach Us</p>
       <div class="contact-item">
-        <div class="ci-icon">📍</div>
-        <div><strong>LOCATION</strong><p>United Kingdom · Serving UK & Europe</p></div>
+        <div class="ci-icon cii1">📍</div>
+        <div><strong>Location</strong><p>United Kingdom · Serving UK &amp; Europe</p></div>
       </div>
       <div class="contact-item">
-        <div class="ci-icon">✉️</div>
-        <div><strong>EMAIL</strong><p>info@cybaethrex.com</p></div>
+        <div class="ci-icon cii2">✉️</div>
+        <div><strong>Email</strong><p>info@cybaethrex.com</p></div>
       </div>
       <div class="contact-item">
-        <div class="ci-icon">🔐</div>
-        <div><strong>SERVICES</strong><p>Cyber · Cloud · AI Security · Training · Consultancy · Audits</p></div>
+        <div class="ci-icon cii3">🔐</div>
+        <div><strong>Services</strong><p>Cyber · Cloud · AI Security · Training · Consultancy · Audits</p></div>
       </div>
       <div class="contact-item">
-        <div class="ci-icon">🎓</div>
-        <div><strong>UNIVERSITIES</strong><p>Partner with us to bring industry-led cyber training to your students</p></div>
+        <div class="ci-icon cii4">🎓</div>
+        <div><strong>Universities</strong><p>Partner with us to bring industry-led cyber training to your students</p></div>
       </div>
       <div class="contact-item">
-        <div class="ci-icon">🤝</div>
-        <div><strong>VENDORS & PARTNERS</strong><p>Co-branded certifications · Joint training · Technology partnerships</p></div>
+        <div class="ci-icon cii5">🤝</div>
+        <div><strong>Vendors &amp; Partners</strong><p>Co-branded certifications · Joint training · Technology partnerships</p></div>
       </div>
     </div>
-    <div>
+    <div class="contact-form-wrap">
+      <p class="form-title">Send Us a Message</p>
       <div class="contact-form">
         <div class="form-row">
           <div class="form-group">
-            <label>FULL NAME</label>
+            <label>Full Name</label>
             <input type="text" placeholder="Your name"/>
           </div>
           <div class="form-group">
-            <label>ORGANISATION</label>
+            <label>Organisation</label>
             <input type="text" placeholder="Company / University"/>
           </div>
         </div>
         <div class="form-group">
-          <label>EMAIL ADDRESS</label>
+          <label>Email Address</label>
           <input type="email" placeholder="your@email.com"/>
         </div>
         <div class="form-group">
-          <label>I AM A</label>
+          <label>I Am A</label>
           <select>
             <option value="">Select your profile</option>
             <option>Business / Corporate</option>
@@ -836,10 +1016,10 @@
           </select>
         </div>
         <div class="form-group">
-          <label>HOW CAN WE HELP?</label>
+          <label>How Can We Help?</label>
           <textarea placeholder="Tell us about your security needs, training requirements or partnership interest..."></textarea>
         </div>
-        <button class="btn-primary" id="submitBtn" style="width:100%;padding:16px;font-size:0.8rem;border-radius:3px;">SEND MESSAGE →</button>
+        <button class="btn-submit" id="submitBtn">Send Message →</button>
       </div>
     </div>
   </div>
@@ -854,7 +1034,7 @@
       <span class="fb-tagline">Protect · Empower · Advance — King of the Digital World</span>
     </div>
     <div class="footer-col">
-      <h4>SERVICES</h4>
+      <h4>Services</h4>
       <ul>
         <li><a href="#services">Cyber Security</a></li>
         <li><a href="#services">Cloud Security</a></li>
@@ -864,20 +1044,21 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h4>TRAINING</h4>
+      <h4>Training</h4>
       <ul>
-        <li><a href="#training">Cyber Fundamentals</a></li>
-        <li><a href="#training">Cloud & AI Security</a></li>
-        <li><a href="#training">Ethical Hacking</a></li>
+        <li><a href="#training">Cyber Training</a></li>
+        <li><a href="#training">Cloud &amp; AI Security</a></li>
+        <li><a href="#training">Software &amp; DevOps</a></li>
         <li><a href="#training">Career Accelerator</a></li>
         <li><a href="#partners">University Partners</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>COMPANY</h4>
+      <h4>Company</h4>
       <ul>
         <li><a href="#about">About Us</a></li>
         <li><a href="#why">Why CYBAETHREX</a></li>
+        <li><a href="#certs">Certifications</a></li>
         <li><a href="#partners">Partners</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -895,34 +1076,45 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
     const t = document.querySelector(a.getAttribute('href'));
-    if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+    if(t){ t.scrollIntoView({behavior:'smooth',block:'start'}); closeMobileNav(); }
   });
 });
+
+// Mobile nav
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const overlay   = document.getElementById('overlay');
+const mobileClose = document.getElementById('mobileClose');
+function openMobileNav(){ mobileNav.classList.add('open'); overlay.classList.add('open'); }
+function closeMobileNav(){ mobileNav.classList.remove('open'); overlay.classList.remove('open'); }
+hamburger.addEventListener('click', openMobileNav);
+mobileClose.addEventListener('click', closeMobileNav);
+overlay.addEventListener('click', closeMobileNav);
 
 // Scroll fade-in
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if(e.isIntersecting){
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
     }
   });
-}, {threshold:0.1});
-document.querySelectorAll('.service-card,.training-card,.pm-card,.why-item,.usp-line,.mp-row,.pillar-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(16px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+},{threshold:0.1});
+document.querySelectorAll('.service-card,.training-card,.pm-card,.why-item,.usp-card,.cert-badge,.pillar-item,.mp-row,.trust-item').forEach(el => {
+  el.style.opacity='0';
+  el.style.transform='translateY(14px)';
+  el.style.transition='opacity 0.5s ease, transform 0.5s ease';
   obs.observe(el);
 });
 
 // Nav shadow on scroll
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll',()=>{
   document.querySelector('nav').style.boxShadow =
-    window.scrollY > 20 ? '0 4px 28px rgba(0,0,0,0.35)' : '';
+    window.scrollY>20 ? '0 4px 20px rgba(13,31,54,0.12)' : '';
 });
 
 // Form submit
-document.getElementById('submitBtn').addEventListener('click', () => {
+document.getElementById('submitBtn').addEventListener('click',()=>{
   alert('Thank you for reaching out to CYBAETHREX!\nWe will be in touch shortly.');
 });
 </script>
